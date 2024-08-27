@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import "./rootLayout.scss";
 import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
+import Logo from '../../../public/logo2.png'
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -14,7 +15,7 @@ const RootLayout = () => {
       <div className="rootLayout">
         <header>
           <Link to="/" className="logo">
-            <img src="logo2.png" alt="" />
+            <img src={Logo} alt="" />
 
             <span>SmartAI</span>
           </Link>

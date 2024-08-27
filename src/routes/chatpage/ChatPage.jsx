@@ -3,11 +3,7 @@ import './chatPage.scss'
 import NewPrompt from '../../components/newPrompt/NewPrompt'
 
 const ChatPage = () => {
-  const endRef = useRef(null)
-
-  useEffect(()=>{
-    endRef.current.scrollIntoView({behaviour:"smooth"});
-  },[])
+ 
   return (
     <div className='chatPage'>
       <div className="wrapper">
@@ -49,7 +45,7 @@ const ChatPage = () => {
           <div className="message">Test Message from ai</div>
           <div className="message user">Test Message from user</div>
           <NewPrompt/>
-          <div ref={endRef}/>
+          
         </div>
       </div>
     </div>
