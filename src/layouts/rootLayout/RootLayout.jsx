@@ -9,7 +9,7 @@ import {
 } from "@clerk/clerk-react";
 import Logo from "../../../public/logo2.png";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
+import { dark } from '@clerk/themes'
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!PUBLISHABLE_KEY) {
@@ -20,7 +20,9 @@ const queryClient = new QueryClient();
 
 const RootLayout = () => {
   return (
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/"  appearance={{
+      baseTheme: dark,
+    }}>
       <QueryClientProvider client={queryClient}>
         <div className="rootLayout">
           <header>
