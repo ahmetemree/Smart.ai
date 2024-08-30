@@ -3,6 +3,8 @@ import "./homepage.scss";
 import { TypeAnimation } from 'react-type-animation';
 
 const Homepage = () => {
+
+ 
   return (
     <div className="homepage">
       <div className="left">
