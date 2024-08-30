@@ -12,16 +12,23 @@
     flex-direction: column;
     width: 50%;
     gap: 50px;
-
+    
     .logo {
       display: flex;
       align-items: center;
       gap: 20px;
       opacity: 0.2;
-
+      @media screen and (max-width: 640px) {
+        flex-direction: column;
+       }
+      
       img {
         width: 64px;
         height: 64px;
+        @media screen and (max-width: 640px) {
+          height: 32px;
+          width: 32px;
+         }
       }
 
       h1 {
@@ -30,6 +37,9 @@
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
+        @media screen and (max-width: 640px) {
+          font-size: 32px;
+         }
       }
     }
 
@@ -41,6 +51,8 @@
       gap: 20px;
 
       .option {
+        width: 200px;
+        height: 150px;
         opacity: 0.5;
         flex: 1;
         display: flex;
@@ -51,12 +63,20 @@
         padding: 30px;
         border: 1px solid #555;
         border-radius: 20px;
+        @media screen and (max-width: 1120px) {
+          height: 200px;
+         }
+         @media screen and (max-width: 840px) {
+          display: none;
+         }
         img {
           width: 40px;
           height: 40px;
           object-fit: cover;
         }
       }
+
+      
     }
   }
   .formContainer {

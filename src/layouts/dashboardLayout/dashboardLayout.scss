@@ -3,13 +3,20 @@
     gap: 50px;
     padding-top: 20px;
     height: 100%;
+    @media screen and (max-width: 640px) {
+        gap: 0;
+       }
 
     .menu{
         flex: 1;
+        @media screen and (max-width: 640px) {
+            flex: 0;
+           }
     }
 
     .content{
         flex: 4;
         background-color: #12101b;
     }
+    
 }

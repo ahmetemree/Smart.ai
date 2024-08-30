@@ -11,7 +11,7 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        
+       
         .chat{
             width: 50%;
             display: flex;
@@ -30,6 +30,13 @@
                     align-self: flex-end;
                 }
             }
+            @media screen and (max-width: 350px) {
+            width: 100%;
+            align-items: center;
+            }
+            
         }
+        
     }
+    
 }

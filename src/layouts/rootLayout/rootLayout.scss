@@ -3,6 +3,9 @@
         height: 100vh;
         display: flex;
         flex-direction: column;
+        @media screen and (max-width: 640px) {
+           padding: 0;
+           }
 
         header{
             display: flex;
