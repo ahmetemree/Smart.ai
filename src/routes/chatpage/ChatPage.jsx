@@ -6,6 +6,17 @@ import { useLocation } from "react-router-dom";
 import Markdown from "react-markdown";
 import { IKImage } from "imagekitio-react";
 const ChatPage = () => {
+  const { getToken } = useAuth();
+  const [token,setUserToken] = useState("")
+  
+  useEffect(()=>{
+    const takeToken = async ()=>{
+      const takenToken = await getToken();
+      setUserToken(takenToken)
+      console.log(takenToken);
+    }
+    takeToken()
+  },[])
   const path = useLocation().pathname;
   const chatId = path.split("/").pop();
   const { isPending, error, data } = useQuery({
@@ -13,6 +24,9 @@ const ChatPage = () => {
     queryFn: () =>
       fetch(`${import.meta.env.VITE_API_URL}/api/chats/${chatId}`, {
         credentials: "include",
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
       }).then((res) => res.json()),
       
   });

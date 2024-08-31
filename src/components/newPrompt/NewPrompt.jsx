@@ -23,7 +23,17 @@ const NewPrompt = ({ data }) => {
     dbData: {},
     aiData: {},
   });
-  const {getToken} = useAuth()
+  const { getToken } = useAuth();
+  const [token,setUserToken] = useState("")
+  
+  useEffect(()=>{
+    const takeToken = async ()=>{
+      const takenToken = await getToken();
+      setUserToken(takenToken)
+      console.log(takenToken);
+    }
+    takeToken()
+  },[])
 
   const chat = model.startChat({
     history: data?.history?.length > 0 
@@ -52,6 +62,7 @@ const NewPrompt = ({ data }) => {
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
           question: question.length ? question : undefined,
@@ -88,7 +99,6 @@ const NewPrompt = ({ data }) => {
     if (!text) return;
     add(text,false);
     const token = await getToken();
-    console.log(token);
   };
 
   const add = async (text, isInitial) => {

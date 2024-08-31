@@ -2,6 +2,17 @@ import { QueryClient, useMutation, useQueryClient } from "@tanstack/react-query"
 import "./dashboardPage.scss";
 import { useNavigate } from "react-router-dom";
 const DashboardPage = () => {
+  const { getToken } = useAuth();
+  const [token,setUserToken] = useState("")
+  
+  useEffect(()=>{
+    const takeToken = async ()=>{
+      const takenToken = await getToken();
+      setUserToken(takenToken)
+      console.log(takenToken);
+    }
+    takeToken()
+  },[])
 
   const queryClient =  useQueryClient()
   const navigate = useNavigate()
@@ -14,6 +25,7 @@ const DashboardPage = () => {
         credentials:"include",
         headers: {
           "Content-Type": "application/json",
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({ text: text }),
       }).then((res) => res.json());
