@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
 import Markdown from "react-markdown";
 import { IKImage } from "imagekitio-react";
+import { useAuth } from "@clerk/clerk-react";
 const ChatPage = () => {
   const { getToken } = useAuth();
   const [token,setUserToken] = useState("")

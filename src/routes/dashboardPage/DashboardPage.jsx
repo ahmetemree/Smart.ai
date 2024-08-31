@@ -1,6 +1,8 @@
 import { QueryClient, useMutation, useQueryClient } from "@tanstack/react-query";
 import "./dashboardPage.scss";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@clerk/clerk-react";
+import { useEffect } from "react";
 const DashboardPage = () => {
   const { getToken } = useAuth();
   const [token,setUserToken] = useState("")
