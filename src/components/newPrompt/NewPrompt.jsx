@@ -9,6 +9,8 @@ import {
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
+import { useAuth } from "@clerk/clerk-react";
+
 
 const NewPrompt = ({ data }) => {
   const [question, setQuestion] = useState("");
@@ -21,6 +23,7 @@ const NewPrompt = ({ data }) => {
     dbData: {},
     aiData: {},
   });
+  const {getToken} = useAuth()
 
   const chat = model.startChat({
     history: data?.history?.length > 0 
@@ -30,7 +33,7 @@ const NewPrompt = ({ data }) => {
       }))
     : [],
     generationConfig: {
-       maxOutputTokens:100,
+      //  maxOutputTokens:100,
     },
   });
   const endRef = useRef(null);
@@ -84,6 +87,8 @@ const NewPrompt = ({ data }) => {
     const text = e.target.text.value;
     if (!text) return;
     add(text,false);
+    const token = await getToken();
+    console.log(token);
   };
 
   const add = async (text, isInitial) => {
