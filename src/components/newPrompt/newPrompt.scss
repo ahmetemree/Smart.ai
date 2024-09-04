@@ -9,7 +9,7 @@
     }
   }
   .newForm {
-    width: max-content;
+    width: 50%;
     position: absolute;
     bottom: 0;
     background-color: #2c2937;
@@ -21,6 +21,9 @@
     @media screen and (max-width: 640px) {
       gap: 0;
       padding: 5;
+      width: max-content;
+    }
+    @media screen and (max-width: 1000px) {
       width: max-content;
     }
 

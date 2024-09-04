@@ -138,6 +138,7 @@ const NewPrompt = ({ data }) => {
       mutation.mutate();
     } catch (err) {
       console.log(err);
+      setGenerating(false);
     }
   };
 
