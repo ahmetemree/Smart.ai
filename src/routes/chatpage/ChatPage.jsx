@@ -6,7 +6,10 @@ import { useLocation } from "react-router-dom";
 import Markdown from "react-markdown";
 import { IKImage } from "imagekitio-react";
 import { useAuth } from "@clerk/clerk-react";
+import SetHamburgerMenuVis from '../../context/setHamburgerMenuVis';
+
 const ChatPage = () => {
+  const { isMenuOpen, setIsMenuOpen } = SetHamburgerMenuVis();
   const { getToken } = useAuth();
   const [token,setUserToken] = useState("")
   
@@ -15,6 +18,7 @@ const ChatPage = () => {
       const takenToken = await getToken();
       setUserToken(takenToken)
       console.log(takenToken);
+      setIsMenuOpen(false)
     }
     takeToken()
   },[])

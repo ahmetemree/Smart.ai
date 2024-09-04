@@ -1,26 +1,41 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import "./dashboardLayout.scss";
 import { useAuth } from "@clerk/clerk-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa"; // Hamburger ve kapatma ikonları
 import ChatList from "../../components/chatList/ChatList";
+import SetHamburgerMenuVis from "../../context/setHamburgerMenuVis";
+
+
+
+
 
 const DashboardLayout = () => {
   const { userId, isLoaded } = useAuth();
-    
-
   const navigate = useNavigate();
+  const { isMenuOpen, setIsMenuOpen } = SetHamburgerMenuVis();
+  
+
   useEffect(() => {
-    
     if (isLoaded && !userId) {
       navigate("/sign-in");
     }
-  }, [isLoaded,userId,navigate]);
+  }, [isLoaded, userId, navigate]);
 
-  if(!isLoaded) return "Loading.."
+  if (!isLoaded) return "Loading...";
+
   return (
     <div className="dashboardLayout">
-      <div className="menu"><ChatList/></div>
-      <div className="content">
+      <button
+        className="hamburger"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        {isMenuOpen ? <FaTimes /> : <FaBars />}
+      </button>
+      <div className={`menu ${isMenuOpen ? "open" : ""}`}>
+        <ChatList />
+      </div>
+      <div className={`content ${isMenuOpen ? "shifted" : ""}`}>
         <Outlet />
       </div>
     </div>

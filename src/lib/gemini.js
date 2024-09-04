@@ -10,7 +10,8 @@ const safetySettings = [
       threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
     },
   ];const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_PUBLIC_KEY);
+  
 
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", safetySettings,});
+const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro", safetySettings,});
 
 export default model;

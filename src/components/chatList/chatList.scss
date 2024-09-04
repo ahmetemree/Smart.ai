@@ -58,7 +58,8 @@
             }
         }
     }
-    @media screen and (max-width: 640px) {
-        display: none;
+    @media screen and (max-width: 750px) {
+        // display: none;
+        margin: 50px;
        }
 }
