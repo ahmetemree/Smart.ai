@@ -89,6 +89,7 @@ const NewPrompt = ({ data }) => {
     },
     onError: (err) => {
       console.log(err);
+      setGenerating(false);
     },
   });
 
