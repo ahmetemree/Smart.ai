@@ -14,7 +14,7 @@ const DashboardLayout = () => {
   const { userId, isLoaded } = useAuth();
   const navigate = useNavigate();
   const { isMenuOpen, setIsMenuOpen } = SetHamburgerMenuVis();
-  
+  console.log(isMenuOpen);
 
   useEffect(() => {
     if (isLoaded && !userId) {
@@ -32,10 +32,10 @@ const DashboardLayout = () => {
       >
         {isMenuOpen ? <FaTimes /> : <FaBars />}
       </button>
-      <div className={`menu ${isMenuOpen ? "open" : ""}`}>
+      <div className={`menu ${isMenuOpen ? "open" : ""}`} onClick={() => setIsMenuOpen(false)}>
         <ChatList />
       </div>
-      <div className={`content ${isMenuOpen ? "shifted" : ""}`}>
+      <div className={`content ${isMenuOpen ? "shifted" : ""}`}  onClick={() => setIsMenuOpen(false)}>
         <Outlet />
       </div>
     </div>
