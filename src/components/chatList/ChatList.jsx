@@ -7,14 +7,14 @@ const ChatList = () => {
   const { getToken } = useAuth();
   const [token,setUserToken] = useState("")
   
-  useEffect(()=>{
-    const takeToken = async ()=>{
-      const takenToken = await getToken();
-      setUserToken(takenToken)
-      console.log(takenToken);
-    }
-    takeToken()
-  },[])
+  useEffect(() => {
+    const fetchToken = async () => {
+      const token = await getToken();
+      setToken(token);
+    };
+
+    fetchToken();
+  }, [getToken]);
   
   const { isPending, error, data } = useQuery({
     queryKey: ['userChats'],
