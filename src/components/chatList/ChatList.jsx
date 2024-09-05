@@ -10,7 +10,7 @@ const ChatList = () => {
   useEffect(() => {
     const fetchToken = async () => {
       const token = await getToken();
-      setToken(token);
+      setUserToken(token);
     };
 
     fetchToken();
