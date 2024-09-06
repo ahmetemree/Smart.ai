@@ -1,3 +1,5 @@
-# Lama Dev AI Chat Bot App Starter Setup
+# SmartAI
 
-This template provides a minimal setup to get React 19 working in Vite with HMR and some ESLint rules.
+You can visit this page for testing SmartAI:
+
+https://smart-ai-two.vercel.app/
