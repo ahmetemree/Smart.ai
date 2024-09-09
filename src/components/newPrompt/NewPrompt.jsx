@@ -23,15 +23,16 @@ const NewPrompt = ({ data }) => {
     dbData: {},
     aiData: {},
   });
-  const { getToken } = useAuth();
+  const { getToken,isSignedIn } = useAuth();
   const [token,setUserToken] = useState("")
-  
+
+  const takeToken = async ()=>{
+    const takenToken = await getToken();
+    setUserToken(takenToken)
+    return takenToken
+  }
+
   useEffect(()=>{
-    const takeToken = async ()=>{
-      const takenToken = await getToken();
-      setUserToken(takenToken)
-      console.log(takenToken);
-    }
     takeToken()
   },[])
 
@@ -95,11 +96,11 @@ const NewPrompt = ({ data }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    await takeToken()
     setGenerating(true);
     const text = e.target.text.value;
     if (!text) return;
     add(text,false);
-    const token = await getToken();
   };
 
   const add = async (text, isInitial) => {
